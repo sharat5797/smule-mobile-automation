@@ -1,11 +1,11 @@
 package smule.pages.Home;
 
 public class HomeScreen extends HomeLocators {
-    public boolean isMenuPresent() {
-        return getIconMenu().isDisplayed();
+    public boolean isLocationTitlePresent() {
+        return getLocationTitle().isDisplayed();
     }
 
-    public String getProductHeaderText() {
-        return getProductHeader().getText();
+    public String getLocationHeaderText() {
+        return getLocationTitle().getText();
     }
 }

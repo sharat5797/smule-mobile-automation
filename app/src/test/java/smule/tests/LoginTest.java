@@ -2,30 +2,41 @@ package smule.tests;
 
 import common_utils.ConfigLoader;
 import common_utils.FilePaths;
+import org.testng.annotations.BeforeTest;
 import smule.pages.Home.HomeScreen;
 import smule.pages.Login.LoginScreen;
 import smule.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import smule.pages.LoginOptions.LoginOptionsScreen;
+import smule.pages.LoginOptions.LoginOptionsScreenActions;
 
 import java.util.Map;
 
 public class LoginTest extends BaseTest {
-
     LoginScreen loginScreen;
     HomeScreen homeScreen;
+    LoginOptionsScreen loginOptionsScreen;
+    LoginOptionsScreenActions loginOptionsScreenActions;
     Map credentials = new ConfigLoader().getJSON(FilePaths.CREDENTIALS);
 
     @Test(description = "Test login in App")
     public void testLoginInApp() {
-        //Arrange
-        loginScreen = new LoginScreen();
+        //ARRANGE
+        loginOptionsScreen = new LoginOptionsScreen();
+        loginOptionsScreenActions = new LoginOptionsScreenActions();
+        loginOptionsScreenActions.scrollLanguages();
+        loginOptionsScreen.selectLanguage();
+        loginOptionsScreen.confrimLanguage();
+        loginScreen = loginOptionsScreen.signInWithEmail();
 
         //ACT
-        homeScreen = loginScreen.enterOrgName((String) credentials.get("username")).enterPassword((String) credentials.get("password")).clickLoginButton();
+        loginScreen.enterEmail((String) credentials.get("email")).clickNextButton();
+        homeScreen = loginScreen.enterPassword((String) credentials.get("password")).clickNextButton();
 
         //Assert
-        Assert.assertTrue(homeScreen.isMenuPresent());
-        Assert.assertEquals(homeScreen.getProductHeaderText(),"PRODUCTS");
+        Assert.assertTrue(homeScreen.isLocationTitlePresent());
+        Assert.assertEquals(homeScreen.getLocationHeaderText(), "Music in my area");
+
     }
 }

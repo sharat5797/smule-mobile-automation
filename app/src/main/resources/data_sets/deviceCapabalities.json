@@ -2,5 +2,4 @@
   "platformName": "Android",
   "appium:app": "/Users/testvagrant/Downloads/smule-11-2-1.apk",
   "appium:automationName": "UiAutomator2",
-  "appium:appWaitActivity": "com.swaglabsmobileapp.MainActivity"
 }

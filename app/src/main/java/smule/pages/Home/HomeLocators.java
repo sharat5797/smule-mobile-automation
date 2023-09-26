@@ -15,10 +15,9 @@ public class HomeLocators extends BasePage {
         PageFactory.initElements(new AppiumFieldDecorator(androidDriver), this);
     }
 
-    @iOSBy(accessibility = "IOS_SAMPLE")
-    @AndroidFindBy(accessibility = "test-Menu")
-    private WebElement iconMenu;
+    @AndroidFindBy(id = "com.smule.singandroid:id/title")
+    private WebElement locationTitle;
 
-    @AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc=\"test-Cart drop zone\"]/android.view.ViewGroup/android.widget.TextView")
-    private WebElement productHeader;
+    @AndroidFindBy(id = "com.smule.singandroid:id/yesButton")
+    private WebElement locationPermissionOk;
 }

@@ -20,7 +20,7 @@ public class BasePage {
         ConfigLoader configLoader = new ConfigLoader();
         DesiredCapabilities capabilities = new DesiredCapabilities(configLoader.getCapability());
         try {
-            androidDriver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+            androidDriver = new AndroidDriver(new URL("http://localhost:4723/wd/hub"), capabilities);
             androidDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         } catch (Exception e) {
             e.printStackTrace();

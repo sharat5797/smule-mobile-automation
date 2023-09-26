@@ -18,14 +18,15 @@ import java.time.Duration;
 public class BaseTest {
 
     AppiumDriver androidDriver;
+
     @BeforeClass
-    public void setUp(){
+    public void setUp() {
         androidDriver = new BasePage().getDriver();
         androidDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
 
     @BeforeMethod
-    public void beforeMethod(Method m){
+    public void beforeMethod(Method m) {
         TestLogger.info("STARTING TEST: " + m.getName());
         TestLogger.info("THREAD ID: " + Thread.currentThread().getId());
     }

@@ -4,19 +4,25 @@ import io.qameta.allure.Step;
 import smule.pages.Home.HomeScreen;
 
 public class LoginScreen extends LoginLocators {
-    @Step("Entering username")
-    public LoginScreen enterOrgName(String name) {
-        txtUserName.sendKeys(name);
+    @Step("Entering EmailId")
+    public LoginScreen enterEmail(String email) {
+        txtEmailId.sendKeys(email);
         return this;
     }
+
+    @Step("click on next button")
+    public HomeScreen clickNextButton() {
+        new LoginLocators().btnNext.click();
+        return new HomeScreen();
+    }
+
     @Step("Entering password")
     public LoginScreen enterPassword(String password) {
         txtPassword.sendKeys(password);
         return this;
     }
-    @Step("click on login button")
-    public HomeScreen clickLoginButton() {
-        new LoginLocators().btnLogin.click();
-        return new HomeScreen();
+
+    public boolean isHeaderPresent() {
+        return getHeader().isDisplayed();
     }
 }
