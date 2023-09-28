@@ -16,8 +16,25 @@ public class HomeLocators extends BasePage {
     }
 
     @AndroidFindBy(id = "com.smule.singandroid:id/title")
-    private WebElement locationTitle;
+    public WebElement locationTitle;
 
     @AndroidFindBy(id = "com.smule.singandroid:id/yesButton")
-    private WebElement locationPermissionOk;
+    public WebElement locationPermissionOk;
+
+    @AndroidFindBy(id = "com.android.permissioncontroller:id/permission_allow_foreground_only_button")
+    public WebElement whileUsingTheApp;
+
+    @AndroidFindBy(id = "com.smule.singandroid:id/top_toolbar")
+    public WebElement toolbar;
+
+    @AndroidFindBy(accessibility = "Messages")
+    public WebElement messageIconLocator;
+
+    @AndroidFindBy(id = "com.smule.singandroid:id/sku_selection_title_text_view")
+    public WebElement premiumHeader;
+
+    @AndroidFindBy(id = "com.smule.singandroid:id/top_back_button")
+    public WebElement goBackBtnPremiumAdd;
+
+
 }

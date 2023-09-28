@@ -17,6 +17,7 @@ public class LoginLocators extends BasePage {
     public WebElement txtPassword;
     @AndroidFindBy(id = "com.smule.singandroid:id/txt_screen_title")
     public WebElement header;
+
     public LoginLocators() {
         PageFactory.initElements(new AppiumFieldDecorator(androidDriver), this);
     }

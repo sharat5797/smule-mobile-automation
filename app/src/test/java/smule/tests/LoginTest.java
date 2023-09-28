@@ -2,6 +2,7 @@ package smule.tests;
 
 import common_utils.ConfigLoader;
 import common_utils.FilePaths;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import smule.pages.Home.HomeScreen;
 import smule.pages.Login.LoginScreen;
@@ -19,24 +20,23 @@ public class LoginTest extends BaseTest {
     LoginOptionsScreen loginOptionsScreen;
     LoginOptionsScreenActions loginOptionsScreenActions;
     Map credentials = new ConfigLoader().getJSON(FilePaths.CREDENTIALS);
-
-    @Test(description = "Test login in App")
-    public void testLoginInApp() {
-        //ARRANGE
+    @BeforeMethod
+    public void setupLanguage(){
         loginOptionsScreen = new LoginOptionsScreen();
         loginOptionsScreenActions = new LoginOptionsScreenActions();
         loginOptionsScreenActions.scrollLanguages();
         loginOptionsScreen.selectLanguage();
         loginOptionsScreen.confrimLanguage();
         loginScreen = loginOptionsScreen.signInWithEmail();
+    }
 
+    @Test(description = "Test Login Success")
+    public void testLoginInApp() {
         //ACT
         loginScreen.enterEmail((String) credentials.get("email")).clickNextButton();
         homeScreen = loginScreen.enterPassword((String) credentials.get("password")).clickNextButton();
-
         //Assert
         Assert.assertTrue(homeScreen.isLocationTitlePresent());
         Assert.assertEquals(homeScreen.getLocationHeaderText(), "Music in my area");
-
     }
 }

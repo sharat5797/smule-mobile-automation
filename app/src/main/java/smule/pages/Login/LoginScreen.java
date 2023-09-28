@@ -18,6 +18,7 @@ public class LoginScreen extends LoginLocators {
 
     @Step("Entering password")
     public LoginScreen enterPassword(String password) {
+        new LoginLocators();
         txtPassword.sendKeys(password);
         return this;
     }
