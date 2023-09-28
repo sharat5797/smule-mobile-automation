@@ -36,5 +36,7 @@ public class HomeLocators extends BasePage {
     @AndroidFindBy(id = "com.smule.singandroid:id/top_back_button")
     public WebElement goBackBtnPremiumAdd;
 
+    @AndroidFindBy(xpath = "//android.widget.FrameLayout[@index = '0']/android.widget.FrameLayout[@index='1']")
+    public WebElement feedButton;
 
 }

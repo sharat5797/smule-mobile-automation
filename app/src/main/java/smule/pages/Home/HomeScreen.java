@@ -5,6 +5,7 @@ import io.appium.java_client.TouchAction;
 import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
 import io.qameta.allure.Step;
+import smule.pages.Feed.FeedScreen;
 import smule.pages.Login.LoginLocators;
 import smule.pages.Login.LoginScreen;
 import smule.pages.Message.MessageScreen;
@@ -37,6 +38,11 @@ public class HomeScreen extends HomeLocators {
         messageIconLocator.click();
         return new MessageScreen();
     }
+    @Step("Navigate to Feed Screen")
+    public FeedScreen navigateToFeedScreen(){
+        feedButton.click();
+        return new FeedScreen();
+    }
 
     public HomeScreen goBackFromPremiumAdd(){
 //        new HomeLocators();
@@ -48,6 +54,7 @@ public class HomeScreen extends HomeLocators {
 //        }
         return this;
     }
+
 
     public void tap(){
         new TouchAction((PerformsTouchActions) androidDriver).press(PointOption.point(1002, 375))

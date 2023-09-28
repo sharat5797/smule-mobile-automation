@@ -6,6 +6,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import smule.BaseTest;
+import smule.pages.Feed.FeedScreen;
 import smule.pages.Home.HomeScreen;
 import smule.pages.Login.LoginScreen;
 import smule.pages.LoginOptions.LoginOptionsScreen;
@@ -14,11 +15,12 @@ import smule.pages.Message.MessageScreen;
 
 import java.util.Map;
 
-public class MessageScreenTest extends BaseTest {
+public class FeedTest extends BaseTest {
     LoginScreen loginScreen;
     HomeScreen homeScreen;
     LoginOptionsScreen loginOptionsScreen;
     LoginOptionsScreenActions loginOptionsScreenActions;
+    FeedScreen feedScreen;
     Map credentials = new ConfigLoader().getJSON(FilePaths.CREDENTIALS);
     @BeforeMethod
     public void setUpMessageScreen(){
@@ -34,17 +36,11 @@ public class MessageScreenTest extends BaseTest {
         homeScreen.clickWhileUsingTheApp();
         homeScreen.tap();
     }
-    @Test(description = "Test Message Sending")
-    public void shouldTestSendMessage() throws InterruptedException {
+
+    @Test(description = "Test Feed Screen Launcher")
+    public void shouldTestFeedScreen(){
         //Arrange
-        homeScreen.goBackFromPremiumAdd();
-        MessageScreen messageScreen = homeScreen.navigateToMessageScreen();
-        //Act
-        messageScreen.clickNewChatIcon()
-                .enterUserName("vineettv")
-                .selectUserProfile().
-                clickOnNextButton().sendMessage("down for the day");
-        //Assert
-        Assert.assertTrue(messageScreen.isSendMessageBtnClickAble());
+        feedScreen = homeScreen.navigateToFeedScreen();
+        Assert.assertTrue(feedScreen.isFeedCardsVisible());
     }
 }
