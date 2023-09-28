@@ -9,6 +9,7 @@ import smule.pages.Feed.FeedScreen;
 import smule.pages.Login.LoginLocators;
 import smule.pages.Login.LoginScreen;
 import smule.pages.Message.MessageScreen;
+import smule.pages.Search.SearchScreen;
 
 import java.time.Duration;
 
@@ -42,6 +43,12 @@ public class HomeScreen extends HomeLocators {
     public FeedScreen navigateToFeedScreen(){
         feedButton.click();
         return new FeedScreen();
+    }
+
+    @Step("clicking on search button")
+    public SearchScreen clickOnSearchButton() {
+        searchBtnLocator.click();
+        return new SearchScreen();
     }
 
     public HomeScreen goBackFromPremiumAdd(){
