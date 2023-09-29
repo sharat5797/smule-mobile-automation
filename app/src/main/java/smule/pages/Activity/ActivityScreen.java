@@ -15,6 +15,16 @@ public class ActivityScreen extends ActivityLocators{
         invitesButton.click();
         return this;
     }
+    @Step("click on Notification Button")
+    public ActivityScreen clickNotificationButton() {
+        notificationButton.click();
+        return this;
+    }
+    @Step("click on News Button")
+    public ActivityScreen clickNewsButton() {
+        newsButton.click();
+        return this;
+    }
     @Step("tap on suggetion tab")
     public ActivityScreen tapSuggetionTab() {
         suggestion.click();
@@ -23,6 +33,15 @@ public class ActivityScreen extends ActivityLocators{
 
     public boolean isInvitesNavigatorVisible(){
         return invitesButton.isDisplayed();
+    }
+    public boolean isNotificationsVisible(){
+        return notifications.isDisplayed();
+    }
+    public boolean isInvitesVisible(){
+        return invites.isDisplayed();
+    }
+    public boolean isNewsVisible(){
+        return news.isDisplayed();
     }
     public void tap(){
         new TouchAction((PerformsTouchActions) androidDriver).press(PointOption.point(500, 1100))

@@ -2,12 +2,9 @@ package smule;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
+import org.testng.annotations.*;
 import smule.pages.BasePage;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import common_utils.TestLogger;
-import org.testng.annotations.Listeners;
 
 import java.io.FileNotFoundException;
 import java.lang.reflect.Method;
@@ -30,6 +27,10 @@ public class BaseTest {
         TestLogger.info("STARTING TEST: " + m.getName());
         TestLogger.info("THREAD ID: " + Thread.currentThread().getId());
     }
+//    @AfterMethod
+//    public void clearDriver(){
+//        androidDriver.quit();
+//    }
 
     @AfterClass
     public void tearDown() {
