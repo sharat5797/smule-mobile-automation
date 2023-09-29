@@ -27,8 +27,9 @@ public class ActivityTest extends BaseTest {
     ActivityScreen activityScreen;
 
     Map credentials = new ConfigLoader().getJSON(FilePaths.CREDENTIALS);
-    @BeforeClass
-    public void setUpActivityScreen(){
+
+    @BeforeClass(groups = {"full", "sanity"})
+    public void setUpActivityScreen() {
         loginOptionsScreen = new LoginOptionsScreen();
         loginOptionsScreenActions = new LoginOptionsScreenActions();
         loginOptionsScreenActions.scrollLanguages();
@@ -42,29 +43,33 @@ public class ActivityTest extends BaseTest {
         homeScreen.tap();
         activityScreen = homeScreen.navigateToActivityScreen();
     }
-    @Test(description = "Test Activity Screen")
+
+    @Test(description = "Test Activity Screen", groups = {"full", "sanity"})
     public void activityScreenTest() {
         activityScreen.tapSuggetionTab();
         new ActivityLocators();
         Assert.assertTrue(activityScreen.isInvitesNavigatorVisible());
     }
-    @Test(description = "Test notification Tab")
+
+    @Test(description = "Test notification Tab", groups = {"full"})
     public void notificationTabTest() {
         new ActivityLocators();
         activityScreen.clickNotificationButton();
         Assert.assertTrue(activityScreen.isNotificationsVisible());
     }
-    @Test(description = "Test invites tab")
+
+    @Test(description = "Test invites tab", groups = {"full"})
     public void invitesTabTest() {
         new ActivityLocators();
         activityScreen.clickInvitesButton();
         Assert.assertTrue(activityScreen.isInvitesVisible());
     }
-    @Test(description = "Test News tab")
+
+    @Test(description = "Test News tab", groups = {"full"})
     public void newsTabTest() {
         new ActivityLocators();
         activityScreen.clickNewsButton();
         Assert.assertTrue(activityScreen.isNewsVisible());
-        Assert.assertEquals(activityScreen.news.getText(),"No news from Smule yet");
+        Assert.assertEquals(activityScreen.news.getText(), "No news from Smule yet");
     }
 }

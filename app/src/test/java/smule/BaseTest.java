@@ -16,13 +16,13 @@ public class BaseTest {
 
     AppiumDriver androidDriver;
 
-    @BeforeClass
+    @BeforeClass(groups = {"full", "sanity"})
     public void setUp() {
         androidDriver = new BasePage().getDriver();
         androidDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
 
-    @BeforeMethod
+    @BeforeMethod(groups = {"full", "sanity"})
     public void beforeMethod(Method m) {
         TestLogger.info("STARTING TEST: " + m.getName());
         TestLogger.info("THREAD ID: " + Thread.currentThread().getId());
@@ -32,7 +32,7 @@ public class BaseTest {
 //        androidDriver.quit();
 //    }
 
-    @AfterClass
+    @AfterClass(groups = {"full", "sanity"})
     public void tearDown() {
         androidDriver.quit();
         TestLogger.shutdown();

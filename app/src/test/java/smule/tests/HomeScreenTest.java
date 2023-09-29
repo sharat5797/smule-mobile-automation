@@ -20,7 +20,7 @@ public class HomeScreenTest extends BaseTest {
     LoginOptionsScreen loginOptionsScreen;
     LoginOptionsScreenActions loginOptionsScreenActions;
     Map credentials = new ConfigLoader().getJSON(FilePaths.CREDENTIALS);
-    @BeforeMethod
+    @BeforeMethod(groups = {"full", "sanity"})
     public void setupLogin(){
         loginOptionsScreen = new LoginOptionsScreen();
         loginOptionsScreenActions = new LoginOptionsScreenActions();
@@ -31,7 +31,7 @@ public class HomeScreenTest extends BaseTest {
         loginScreen.enterEmail((String) credentials.get("email")).clickNextButton();
         homeScreen = loginScreen.enterPassword((String) credentials.get("password")).clickNextButton();
     }
-    @Test(description = "Test login in App")
+    @Test(description = "Test login in App", groups = {"full","sanity"})
     public void testLocationPermission() {
         //ACT
         homeScreen.clickLocationPermissionOk();

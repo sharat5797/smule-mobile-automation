@@ -17,7 +17,7 @@ public class LoginOptionsTest extends BaseTest {
     private LoginOptionsScreen loginOptionsScreen;
     private LoginOptionsScreenActions loginOptionsScreenActions;
 
-    @Test(description = "Test loginOptions in App")
+    @Test(description = "Test loginOptions in App", groups = {"full","sanity"})
     public void testLoginOptionsScreen() {
         //Arrange
         loginOptionsScreen = new LoginOptionsScreen();

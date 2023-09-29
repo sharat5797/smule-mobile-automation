@@ -21,7 +21,7 @@ public class SearchTest extends BaseTest {
     LoginOptionsScreen loginOptionsScreen;
     LoginOptionsScreenActions loginOptionsScreenActions;
     Map credentials = new ConfigLoader().getJSON(FilePaths.CREDENTIALS);
-    @BeforeMethod
+    @BeforeMethod(groups = {"full", "sanity"})
     public void setupLogin(){
         loginOptionsScreen = new LoginOptionsScreen();
         loginOptionsScreenActions = new LoginOptionsScreenActions();
@@ -36,7 +36,7 @@ public class SearchTest extends BaseTest {
         homeScreen.tap();
         new HomeLocators();
     }
-    @Test(description = "Test Search ")
+    @Test(description = "Test Search ", groups = {"full","sanity"})
     public void shouldTestSearch() {
         //Arrange
         SearchScreen searchScreen = homeScreen.clickOnSearchButton();

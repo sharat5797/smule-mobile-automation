@@ -20,7 +20,7 @@ public class LoginTest extends BaseTest {
     LoginOptionsScreen loginOptionsScreen;
     LoginOptionsScreenActions loginOptionsScreenActions;
     Map credentials = new ConfigLoader().getJSON(FilePaths.CREDENTIALS);
-    @BeforeMethod
+    @BeforeMethod(groups = {"full", "sanity"})
     public void setupLanguage(){
         loginOptionsScreen = new LoginOptionsScreen();
         loginOptionsScreenActions = new LoginOptionsScreenActions();
@@ -30,7 +30,7 @@ public class LoginTest extends BaseTest {
         loginScreen = loginOptionsScreen.signInWithEmail();
     }
 
-    @Test(description = "Test Login Success")
+    @Test(description = "Test Login Success", groups = {"full","sanity"})
     public void testLoginInApp() {
         //ACT
         loginScreen.enterEmail((String) credentials.get("email")).clickNextButton();

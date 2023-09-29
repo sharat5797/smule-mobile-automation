@@ -20,7 +20,7 @@ public class MessageScreenTest extends BaseTest {
     LoginOptionsScreen loginOptionsScreen;
     LoginOptionsScreenActions loginOptionsScreenActions;
     Map credentials = new ConfigLoader().getJSON(FilePaths.CREDENTIALS);
-    @BeforeMethod
+    @BeforeMethod(groups = {"full", "sanity"})
     public void setUpMessageScreen(){
         loginOptionsScreen = new LoginOptionsScreen();
         loginOptionsScreenActions = new LoginOptionsScreenActions();
@@ -34,7 +34,7 @@ public class MessageScreenTest extends BaseTest {
         homeScreen.clickWhileUsingTheApp();
         homeScreen.tap();
     }
-    @Test(description = "Test Message Sending")
+    @Test(description = "Test Message Sending", groups = {"full","sanity"})
     public void shouldTestSendMessage() throws InterruptedException {
         //Arrange
         homeScreen.goBackFromPremiumAdd();

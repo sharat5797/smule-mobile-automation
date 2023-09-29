@@ -22,7 +22,7 @@ public class FeedTest extends BaseTest {
     LoginOptionsScreenActions loginOptionsScreenActions;
     FeedScreen feedScreen;
     Map credentials = new ConfigLoader().getJSON(FilePaths.CREDENTIALS);
-    @BeforeMethod
+    @BeforeMethod(groups = {"full", "sanity"})
     public void setUpMessageScreen(){
         loginOptionsScreen = new LoginOptionsScreen();
         loginOptionsScreenActions = new LoginOptionsScreenActions();
@@ -37,10 +37,11 @@ public class FeedTest extends BaseTest {
         homeScreen.tap();
     }
 
-    @Test(description = "Test Feed Screen Launcher")
+    @Test(description = "Test Feed Screen Launcher", groups = {"full","sanity"})
     public void shouldTestFeedScreen(){
         //Arrange
         feedScreen = homeScreen.navigateToFeedScreen();
         Assert.assertTrue(feedScreen.isFeedCardsVisible());
     }
+
 }

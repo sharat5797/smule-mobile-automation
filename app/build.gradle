@@ -77,3 +77,25 @@ tasks.named('test') {
     // Use TestNG for unit tests.
     useTestNG()
 }
+task fullTest(type: Test) {
+    useTestNG() {
+        suites 'src/test/resources/testing.xml'
+    }
+}
+
+task runall(type: Test) {
+    dependsOn 'fullTest'
+    description = 'Run the full test suite using TestNG'
+    group = 'verification'
+}
+task sanityTest(type: Test) {
+    useTestNG() {
+        suites 'src/test/resources/sanity.xml'
+    }
+}
+
+task runsanity(type: Test) {
+    dependsOn 'sanityTest'
+    description = 'Run the sanity test suite using TestNG'
+    group = 'verification'
+}
