@@ -5,6 +5,7 @@ import io.appium.java_client.TouchAction;
 import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
 import io.qameta.allure.Step;
+import smule.pages.Activity.ActivityScreen;
 import smule.pages.Feed.FeedScreen;
 import smule.pages.Login.LoginLocators;
 import smule.pages.Login.LoginScreen;
@@ -49,6 +50,12 @@ public class HomeScreen extends HomeLocators {
     public SearchScreen clickOnSearchButton() {
         searchBtnLocator.click();
         return new SearchScreen();
+    }
+
+    @Step("Navigate to Activity Screen")
+    public ActivityScreen navigateToActivityScreen(){
+        activityBtn.click();
+        return new ActivityScreen();
     }
 
     public HomeScreen goBackFromPremiumAdd(){

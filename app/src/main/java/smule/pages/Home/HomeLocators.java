@@ -41,4 +41,7 @@ public class HomeLocators extends BasePage {
 
     @AndroidFindBy(id = "com.smule.singandroid:id/pre_search_left_button")
     public WebElement searchBtnLocator;
+
+    @AndroidFindBy(xpath = "//android.widget.FrameLayout[@content-desc=\"Activity\"]")
+    public WebElement activityBtn;
 }
